@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import AddClientPanel from './AddClientPanel';
+
+
 
 export default function App() {
   const [view, setView] = useState('checkin');
@@ -118,7 +121,10 @@ export default function App() {
               Submit Check-In
             </button>
           </form>
-        )}
+        )}{view === 'add' && (
+  <AddClientPanel />
+)}
+
       </div>
     </div>
   );
