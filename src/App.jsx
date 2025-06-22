@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import AddClientPanel from './AddClientPanel';
+import CheckInPanel from './components/CheckInPanel';
+
 
 
 
@@ -57,71 +59,10 @@ export default function App() {
         </div>
 
         {view === 'checkin' && (
-          <form
-            onSubmit={handleCheckInSubmit}
-            className="space-y-4 mt-4 bg-white p-4 rounded shadow max-w-md mx-auto"
-          >
-            <h2 className="text-lg font-semibold">
-              Check-In {selectedClient ? `for ${selectedClient}` : ''}
-            </h2>
+  <CheckInPanel />
+)}
 
-            <div>
-              <label className="block font-medium">Client</label>
-              <input
-                type="text"
-                placeholder="Search clients..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full border p-2 rounded mb-2"
-              />
-              <select
-                value={selectedClient}
-                onChange={(e) => setSelectedClient(e.target.value)}
-                className="w-full border p-2 rounded"
-              >
-                <option value="">Select a client</option>
-                {filteredClients.map((client, idx) => (
-                  <option key={idx} value={client}>
-                    {client}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block font-medium">Trainer</label>
-              <select
-                value={selectedTrainer}
-                onChange={(e) => setSelectedTrainer(e.target.value)}
-                className="w-full border p-2 rounded"
-              >
-                <option value="">Select a trainer</option>
-                <option value="1">Trainer A</option>
-                <option value="2">Trainer B</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block font-medium">Session Type</label>
-              <select
-                value={selectedSessionType}
-                onChange={(e) => setSelectedSessionType(e.target.value)}
-                className="w-full border p-2 rounded"
-              >
-                <option value="">Select session type</option>
-                <option value="1">Private</option>
-                <option value="2">Partner</option>
-              </select>
-            </div>
-
-            <button
-              type="submit"
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            >
-              Submit Check-In
-            </button>
-          </form>
-        )}{view === 'add' && (
+        {view === 'add' && (
   <AddClientPanel />
 )}
 
